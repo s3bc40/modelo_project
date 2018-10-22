@@ -57,10 +57,11 @@ id1<-as.vector(result_correlation[,"id1"])
 id2<-as.vector(result_correlation[,"id2"])
 result_net_genes <- c(id1,id2)
 result_net_genes <- unique(result_net_genes)
-for (i in c("id1","id2")) {
-  data_PPI_filter<- data_PPI[,i] %in% result_net_genes
-  data_PPI <- data_PPI[data_PPI_filter,]
+for(i in c("id1","id2")){
+data_PPI_filter<- data_PPI[,i] %in% list_GOI
+data_PPI <- data_PPI[data_PPI_filter,]
 }
+
 
 # Bind the two table with extra column (direction of correlation)
 LISTE <- rbind(result_correlation, data_PPI)
